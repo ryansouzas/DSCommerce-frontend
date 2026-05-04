@@ -6,19 +6,19 @@ import ButtonInverse from '../../components/ButtonInverse'
 import ProductDetailsCard from '../../components/ProductDetailsCard'
 
 
-export default function ProductDetails(){
-    return(
+export default function ProductDetails() {
+  return (
     <>
-    <HeaderClient/>
-    <main>
-      <section id="product-details-section" class="dsc-container">
-        <ProductDetailsCard/>
-        <div class="dsc-btn-page-container">
-            <ButtonPrimary/>
-            <ButtonInverse/>
-        </div>
-      </section>
-    </main>
+      <HeaderClient />
+      <main>
+        <section id="product-details-section" className="dsc-container">
+          <ProductDetailsCard />
+          <div className="dsc-btn-page-container">
+            <ButtonPrimary />
+            <ButtonInverse />
+          </div>
+        </section>
+      </main>
     </>
-    );
+  );
 }

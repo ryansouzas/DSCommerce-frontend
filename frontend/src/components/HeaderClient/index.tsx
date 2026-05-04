@@ -1,14 +1,14 @@
 import './styles.css'
 import cartIcon from '../../assets/cart.svg'
 
-export default function HeaderClient(){
-    return(
-    <header class="dsc-header-client">
-      <nav class="dsc-container">
+export default function HeaderClient() {
+  return (
+    <header className="dsc-header-client">
+      <nav className="dsc-container">
         <h1>DSCommerce</h1>
-        <div class="dsc-navbar-right">
-          <div class="dsc-menu-items-container">
-            <div class="dsc-menu-item">
+        <div className="dsc-navbar-right">
+          <div className="dsc-menu-items-container">
+            <div className="dsc-menu-item">
               <img src={cartIcon} alt="Carrinho de compras" />
             </div>
           </div>
@@ -16,5 +16,5 @@ export default function HeaderClient(){
         </div>
       </nav>
     </header>
-    );
+  );
 }
