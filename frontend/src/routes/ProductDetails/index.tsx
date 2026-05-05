@@ -9,8 +9,8 @@ import type { ProductDto } from '../../models/product';
 
 const product: ProductDto = {
   id: 2,
-  name: "Smat Tv",
-  description: "Tv bonita",
+  name: "Pc",
+  description: "Pc",
   imgUrl: "",
   price: 2500.99,
   categories: [
@@ -20,7 +20,7 @@ const product: ProductDto = {
     },
     {
       id: 4,
-      name: "Tv"
+      name: "Pc"
     },
     {
       id: 3,
@@ -38,8 +38,8 @@ export default function ProductDetails() {
         <section id="product-details-section" className="dsc-container">
           <ProductDetailsCard product={product} />
           <div className="dsc-btn-page-container">
-            <ButtonPrimary />
-            <ButtonInverse />
+            <ButtonPrimary text='Comprar' />
+            <ButtonInverse text='Início' />
           </div>
         </section>
       </main>
