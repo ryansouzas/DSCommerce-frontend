@@ -548,6 +548,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@remix-run/router@npm:1.0.1"
+  checksum: 10c0/d053f1584fb87437832003ec7f4bbdfa9113266b7af743ee7a5e062ad9114851c17986939984b2f3368251460dc3e51bf6e95681d6faa6d8159bb7104d0cf028
+  languageName: node
+  linkType: hard
+
 "@rolldown/binding-android-arm64@npm:1.0.0-rc.17":
   version: 1.0.0-rc.17
   resolution: "@rolldown/binding-android-arm64@npm:1.0.0-rc.17"
@@ -694,6 +701,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/history@npm:^4.7.11":
+  version: 4.7.11
+  resolution: "@types/history@npm:4.7.11"
+  checksum: 10c0/3facf37c2493d1f92b2e93a22cac7ea70b06351c2ab9aaceaa3c56aa6099fb63516f6c4ec1616deb5c56b4093c026a043ea2d3373e6c0644d55710364d02c934
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.15":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
@@ -719,7 +733,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.2.14":
+"@types/react-router-dom@npm:5.3.3":
+  version: 5.3.3
+  resolution: "@types/react-router-dom@npm:5.3.3"
+  dependencies:
+    "@types/history": "npm:^4.7.11"
+    "@types/react": "npm:*"
+    "@types/react-router": "npm:*"
+  checksum: 10c0/a9231a16afb9ed5142678147eafec9d48582809295754fb60946e29fcd3757a4c7a3180fa94b45763e4c7f6e3f02379e2fcb8dd986db479dcab40eff5fc62a91
+  languageName: node
+  linkType: hard
+
+"@types/react-router@npm:*":
+  version: 5.1.20
+  resolution: "@types/react-router@npm:5.1.20"
+  dependencies:
+    "@types/history": "npm:^4.7.11"
+    "@types/react": "npm:*"
+  checksum: 10c0/1f7eee61981d2f807fa01a34a0ef98ebc0774023832b6611a69c7f28fdff01de5a38cabf399f32e376bf8099dcb7afaf724775bea9d38870224492bea4cb5737
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*, @types/react@npm:^19.2.14":
   version: 19.2.14
   resolution: "@types/react@npm:19.2.14"
   dependencies:
@@ -1404,6 +1439,7 @@ __metadata:
     "@types/node": "npm:^24.12.2"
     "@types/react": "npm:^19.2.14"
     "@types/react-dom": "npm:^19.2.3"
+    "@types/react-router-dom": "npm:5.3.3"
     "@vitejs/plugin-react": "npm:^6.0.1"
     "@yarnpkg/plugin-typescript": "npm:^4.1.3"
     eslint: "npm:^10.2.1"
@@ -1412,6 +1448,7 @@ __metadata:
     globals: "npm:^17.5.0"
     react: "npm:19"
     react-dom: "npm:19"
+    react-router-dom: "npm:6.4.1"
     typescript: "npm:^6.0.3"
     typescript-eslint: "npm:^8.58.2"
     vite: "npm:^8.0.10"
@@ -1977,6 +2014,30 @@ __metadata:
   peerDependencies:
     react: ^19.2.5
   checksum: 10c0/8067606e9f58e4c2e8cb5f09570217dbc71c4843ebcaa20ae2085912d3e3a351f17d8f7c1713313cdda7f272840c8c34ff6c860fcb840862071bceea218e0c63
+  languageName: node
+  linkType: hard
+
+"react-router-dom@npm:6.4.1":
+  version: 6.4.1
+  resolution: "react-router-dom@npm:6.4.1"
+  dependencies:
+    "@remix-run/router": "npm:1.0.1"
+    react-router: "npm:6.4.1"
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 10c0/d622c62da440ba53c991f9baa9b5a35a6193f90e0a70d9e85e77a7b69997027ae74b597778c7ac41d2c60b1fff703fe1200fc3a016a23c7582561cc038298b82
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.4.1":
+  version: 6.4.1
+  resolution: "react-router@npm:6.4.1"
+  dependencies:
+    "@remix-run/router": "npm:1.0.1"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 10c0/08b542b97c4c74da160965fdb76895942e93e997df0bed114913712e20ab69c4b41b8c1274a384867e4573ab75c0098f48af816f527a0b8781177999e96d5d86
   languageName: node
   linkType: hard
 
