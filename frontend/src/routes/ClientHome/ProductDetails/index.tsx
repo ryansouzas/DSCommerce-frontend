@@ -4,9 +4,9 @@ import ButtonPrimary from "../../../components/ButtonPrimary";
 import ButtonInverse from "../../../components/ButtonInverse";
 import ProductDetailsCard from "../../../components/ProductDetailsCard";
 
-import type { ProductDto } from "../../../models/product";
+import type { ProductDTO } from "../../../models/product";
 
-const product: ProductDto = {
+const product: ProductDTO = {
   id: 2,
   name: "Pc",
   description: "Pc",
