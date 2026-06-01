@@ -17,11 +17,10 @@ export default function ProductDetails() {
   useEffect(() => {
 
     axios.get(`http://localhost:8080/products/${params.productId}`).then((response) => {
-      console.log(response);
       setProduct(response.data);
     });
 
-  }, []);
+  }, [params.productId]);
 
   return (
     <main>
