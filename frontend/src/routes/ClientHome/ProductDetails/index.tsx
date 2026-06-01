@@ -4,10 +4,10 @@ import ButtonInverse from "../../../components/ButtonInverse";
 import ButtonPrimary from "../../../components/ButtonPrimary";
 import ProductDetailsCard from "../../../components/ProductDetailsCard";
 
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import type { ProductDTO } from "../../../models/product";
+import * as productService from "../../../services/product-service";
 
 export default function ProductDetails() {
   const params = useParams();
@@ -16,7 +16,7 @@ export default function ProductDetails() {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:8080/products/${params.productId}`).then((response) => {
+    productService.findById(Number(params.productId)).then((response) => {
       setProduct(response.data);
     });
 
