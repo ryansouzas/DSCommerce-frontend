@@ -1,7 +1,7 @@
 import axios, { type AxiosRequestConfig } from "axios";
 import { BASE_URL } from "../utils/system";
 
-export function findPageRequest(size = 12, page: number, sort = "name", name: string){
+export function findPageRequest(page: number, name: string, size = 12, sort = "name"){
 
   const config : AxiosRequestConfig = {
     baseURL: BASE_URL,
