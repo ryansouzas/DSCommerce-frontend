@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./styles.css";
-import { loginRequest } from "../../../services/auth-service";
 import type { CredentialsDTO } from "../../../models/auth";
+import "./styles.css";
+import * as authservice from "../../../services/auth-service";
 
 export default function Login() {
 
@@ -12,7 +12,13 @@ export default function Login() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    loginRequest(formData);
+    authservice.loginRequest(formData)
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error("Erro ao realizar login:", error);
+        });
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
