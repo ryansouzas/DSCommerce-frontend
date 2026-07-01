@@ -5,7 +5,7 @@ import type { CredentialsDTO } from "../../../models/auth";
 
 export default function Login() {
 
-  const [formData] = useState<CredentialsDTO>({
+  const [formData, setFormData] = useState<CredentialsDTO>({
     username: "",
     password: ""
   });
@@ -13,6 +13,15 @@ export default function Login() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     loginRequest(formData);
+  }
+
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+
+    const name = event.target.name;
+    const value = event.target.value;
+
+    setFormData({ ...formData, [name]: value });
+  
   }
 
 
@@ -24,11 +33,23 @@ export default function Login() {
             <h2>Login</h2>
             <div className="dsc-form-controls-container">
               <div>
-                <input className="dsc-form-control " type="text" placeholder="Email" />
+                <input 
+                value={formData.username}
+                onChange={handleInputChange}
+                name="username"
+                className="dsc-form-control " 
+                type="text" 
+                placeholder="Email" />
                 <div className="dsc-form-error"></div>
               </div>
               <div>
-                <input className="dsc-form-control" type="password" placeholder="Senha" />
+                <input 
+                value={formData.password}
+                onChange={handleInputChange}
+                name="password"
+                className="dsc-form-control" 
+                type="password" 
+                placeholder="Senha" />
               </div>
             </div>
 
