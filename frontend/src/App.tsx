@@ -30,7 +30,7 @@ function App() {
               />
             </Route>
             
-            <Route path="/admin/" element={<Admin/>}>
+            <Route path="/admin" element={<Admin/>}>
               <Route index element={<AdminHome />} />
             </Route>
             
