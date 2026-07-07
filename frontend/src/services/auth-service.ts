@@ -1,5 +1,6 @@
 import QueryString from "qs";
-import type { CredentialsDTO } from "../models/auth";
+import type { AccessTokenPayloadDTO, CredentialsDTO } from "../models/auth";
+import jwtDecode from "jwt-decode";
 import { CLIENT_ID, CLIENT_SECRET } from "../utils/system";
 import type { AxiosRequestConfig } from "axios";
 import { requestBackend } from "../utils/requests";
@@ -17,7 +18,7 @@ export function loginRequest(loginData: CredentialsDTO) {
         grant_type: "password"
     })
 
-    const config : AxiosRequestConfig = {
+    const config: AxiosRequestConfig = {
         method: "POST",
         url: "/oauth2/token",
         data: requestBody,
@@ -35,6 +36,15 @@ export function saveAccessToken(token: string) {
     accessTokenRepository.save(token);
 }
 
-export function getAccessToken() : string | null {
+export function getAccessToken(): string | null {
     return accessTokenRepository.get();
+}
+
+export function getAccessTokenPayload(): AccessTokenPayloadDTO | undefined {
+    try {
+        const token = accessTokenRepository.get();
+        return token == null ? undefined : (jwtDecode(token) as AccessTokenPayloadDTO);
+    } catch{
+        return undefined;
+    }
 }
