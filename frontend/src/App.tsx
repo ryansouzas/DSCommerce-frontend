@@ -9,6 +9,7 @@ import Login from "./routes/ClientHome/Login";
 import ProductDetails from "./routes/ClientHome/ProductDetails";
 import { ContextCartCount } from "./utils/context-cart";
 import { history } from './utils/history';
+import { PrivateRoute } from "./components/PrivateRoute";
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
               />
             </Route>
             
-            <Route path="/admin" element={<Admin/>}>
+            <Route path="/admin" element={<PrivateRoute><Admin /></PrivateRoute>}>
               <Route index element={<AdminHome />} />
             </Route>
             
