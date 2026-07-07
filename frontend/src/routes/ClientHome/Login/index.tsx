@@ -15,7 +15,6 @@ export default function Login() {
     authservice.loginRequest(formData)
         .then(response => {
         authservice.saveAccessToken(response.data.access_token);
-        console.log(authservice.getAccessTokenPayload());
         })
         .catch(error => {
             console.error("Erro ao realizar login:", error);
