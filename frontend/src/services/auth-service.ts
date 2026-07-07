@@ -1,5 +1,5 @@
 import QueryString from "qs";
-import type { AccessTokenPayloadDTO, CredentialsDTO } from "../models/auth";
+import type { AccessTokenPayloadDTO, CredentialsDTO, RoleEnum } from "../models/auth";
 import jwtDecode from "jwt-decode";
 import { CLIENT_ID, CLIENT_SECRET } from "../utils/system";
 import type { AxiosRequestConfig } from "axios";
@@ -52,4 +52,22 @@ export function getAccessTokenPayload(): AccessTokenPayloadDTO | undefined {
 export function isAuthenticated(): boolean {
     const tokenPayload = getAccessTokenPayload();
     return tokenPayload && tokenPayload.exp * 1000 > Date.now() ? true : false;
+}
+
+export function hasAnyRoles(roles: RoleEnum[]): boolean {
+    if (roles.length === 0) {
+        return true;
+    }
+    
+    const tokenPayload = getAccessTokenPayload();
+    
+    if (tokenPayload !== undefined) {
+        for (let i = 0; i < roles.length; i++) {
+            if (tokenPayload.authorities.includes(roles[i])) {
+                return true;
+            }
+        }
+        //return roles.some(role => tokenData.authorities.includes(role));
+    }
+    return false;
 }
