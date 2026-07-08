@@ -14,6 +14,7 @@ import { history } from './utils/history';
 import { PrivateRoute } from "./components/PrivateRoute";
 import type { AccessTokenPayloadDTO } from "./models/auth";
 import { ContextToken } from "./utils/context-token";
+import Confirmation from "./routes/ClientHome/Confirmation";
 
 function App() {
 
@@ -47,6 +48,10 @@ function App() {
                 <Route
                   path="product-details/:productId"
                   element={<ProductDetails />}
+                />
+                <Route
+                  path="confirmation/:orderId"
+                  element={<Confirmation />}
                 />
               </Route>
 

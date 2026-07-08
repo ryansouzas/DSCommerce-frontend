@@ -24,9 +24,7 @@ export default function Login() {
         authservice.saveAccessToken(response.data.access_token);
         const payload = authservice.getAccessTokenPayload();
         setContextTokenPayload(payload);
-        console.log(payload);
         navigate("/cart");
-
         })
         .catch(error => {
             console.error("Erro ao realizar login:", error);
