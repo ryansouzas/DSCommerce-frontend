@@ -51,7 +51,7 @@ function App() {
                 />
                 <Route
                   path="confirmation/:orderId"
-                  element={<Confirmation />}
+                  element={<PrivateRoute><Confirmation /></PrivateRoute>}
                 />
               </Route>
 
