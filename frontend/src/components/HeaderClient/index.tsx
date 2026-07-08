@@ -5,6 +5,7 @@ import CartIcon from "../CartIcon";
 import "./styles.css";
 import * as authService from "../../services/auth-service";
 import iconAdmin from "../../assets/admin.svg";
+import LoggedUser from "../LoggedUser";
 
 export default function HeaderClient() {
 
@@ -35,7 +36,7 @@ export default function HeaderClient() {
               </Link>
             </div>
           </div>
-          <Link to="/login">Entrar</Link>
+          <LoggedUser/>
         </div>
       </nav>
     </header>

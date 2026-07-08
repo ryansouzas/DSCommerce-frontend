@@ -24,6 +24,7 @@ export default function Login() {
         authservice.saveAccessToken(response.data.access_token);
         const payload = authservice.getAccessTokenPayload();
         setContextTokenPayload(payload);
+        console.log(payload);
         navigate("/cart");
 
         })
