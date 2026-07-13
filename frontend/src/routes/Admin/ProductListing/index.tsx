@@ -7,6 +7,7 @@ import './styles.css';
 import SearchBar from '../../../components/SearchBar';
 import ButtonNextPage from '../../../components/ButtonNextPage';
 import DialogInfo from '../../../components/DialogInfo';
+import DialogConfirmation from '../../../components/DialogConfirmation';
 
 type QueryParams = {
   page: number;
@@ -18,6 +19,11 @@ export default function ProductListing() {
   const [dialogInfoData, setDialogInfoData] = useState({
     visible: false,
     message: "Operação com sucesso!"
+  });
+
+  const [dialogConfirmationData, setDialogConfirmationData] = useState({
+    visible: false,
+    message: "Tem certeza?"
   });
 
   const [isLastPage, setIsLastPage] = useState(false);
@@ -62,10 +68,18 @@ export default function ProductListing() {
   }
 
   function handleDeleteClick(){
-    setDialogInfoData({
-      ...dialogInfoData,
+    setDialogConfirmationData({
+      ...dialogConfirmationData,
       visible: true
     });
+  }
+
+  function handleDialogConfirmationAnswer(answer: boolean){
+    setDialogConfirmationData({
+      ...dialogConfirmationData,
+      visible: false
+    });
+    console.log("Resposta do usuário: " + answer);
   }
 
   return (
@@ -120,6 +134,14 @@ export default function ProductListing() {
           <DialogInfo 
             message={dialogInfoData.message}
             onDialogClose={handleDialogInfoClose}
+          />
+      }
+
+      {
+        dialogConfirmationData.visible &&
+          <DialogConfirmation 
+            message={dialogConfirmationData.message}
+            onDialogAnswer={handleDialogConfirmationAnswer}
           />
       }
     </main>
