@@ -61,7 +61,6 @@ export default function Catalog() {
             <ButtonNextPage onNextPage={handleNextPageClick} />
         }
         
-      
       </section>
     </main>
   );
