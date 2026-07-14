@@ -23,3 +23,11 @@ export function findById(id: number){
     method: "GET"
   });
 }
+
+export function deleteById(id: number){
+  return requestBackend({
+    url: `/products/${id}`,
+    method: "DELETE",
+    withCredentials: true
+  });
+}
