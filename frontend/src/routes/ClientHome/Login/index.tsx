@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import FormInput from "../../../components/FormInput";
 import { useNavigate } from "react-router-dom";
 import * as authservice from "../../../services/auth-service";
-import * as forms from "../../../models/forms";
+import * as forms from "../../../utils/forms";
 import { ContextToken } from "../../../utils/context-token";
 import "./styles.css";
 
