@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import FormInput from "../../../components/FormInput";
 import { useNavigate } from "react-router-dom";
 import * as authservice from "../../../services/auth-service";
+import * as forms from "../../../models/forms";
 import { ContextToken } from "../../../utils/context-token";
 import "./styles.css";
 
@@ -55,13 +56,7 @@ export default function Login() {
     const name = event.target.name;
     const value = event.target.value;
 
-    setFormData({
-      ...formData,
-      [name]: {
-        ...formData[name],
-        value: value
-      }
-    });
+    setFormData(forms.update(formData, name, value));
 
   }
 
