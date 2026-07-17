@@ -36,10 +36,7 @@ export default function Login() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    authservice.loginRequest({
-      username: formData.username.value,
-      password: formData.password.value
-    })
+    authservice.loginRequest(forms.toValues(formData))
       .then(response => {
         authservice.saveAccessToken(response.data.access_token);
         const payload = authservice.getAccessTokenPayload();
