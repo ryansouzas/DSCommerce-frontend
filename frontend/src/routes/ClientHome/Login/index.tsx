@@ -1,34 +1,53 @@
 import { useContext, useState } from "react";
-import type { CredentialsDTO } from "../../../models/auth";
-import "./styles.css";
-import * as authservice from "../../../services/auth-service";
+import FormInput from "../../../components/FormInput";
 import { useNavigate } from "react-router-dom";
+import * as authservice from "../../../services/auth-service";
 import { ContextToken } from "../../../utils/context-token";
+import "./styles.css";
 
 export default function Login() {
 
   const navigate = useNavigate();
 
-    const {setContextTokenPayload} = useContext(ContextToken);
-  
+  const { setContextTokenPayload } = useContext(ContextToken);
 
-  const [formData, setFormData] = useState<CredentialsDTO>({
-    username: "",
-    password: ""
+
+  const [formData, setFormData] = useState<any>({
+    username: {
+      value: "",
+      id: "username",
+      name: "username",
+      type: "text",
+      placeholder: "Email",
+      validation: function (value: string) {
+        return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value.toLowerCase());
+      },
+      message: "Favor informar um email válido",
+    },
+    password: {
+      value: "",
+      id: "password",
+      name: "password",
+      type: "password",
+      placeholder: "Senha",
+    }
   });
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    authservice.loginRequest(formData)
-        .then(response => {
+    authservice.loginRequest({
+      username: formData.username.value,
+      password: formData.password.value
+    })
+      .then(response => {
         authservice.saveAccessToken(response.data.access_token);
         const payload = authservice.getAccessTokenPayload();
         setContextTokenPayload(payload);
         navigate("/cart");
-        })
-        .catch(error => {
-            console.error("Erro ao realizar login:", error);
-        });
+      })
+      .catch(error => {
+        console.error("Erro ao realizar login:", error);
+      });
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -36,8 +55,14 @@ export default function Login() {
     const name = event.target.name;
     const value = event.target.value;
 
-    setFormData({ ...formData, [name]: value });
-  
+    setFormData({
+      ...formData,
+      [name]: {
+        ...formData[name],
+        value: value
+      }
+    });
+
   }
 
 
@@ -49,23 +74,19 @@ export default function Login() {
             <h2>Login</h2>
             <div className="dsc-form-controls-container">
               <div>
-                <input 
-                value={formData.username}
-                onChange={handleInputChange}
-                name="username"
-                className="dsc-form-control " 
-                type="text" 
-                placeholder="Email" />
+                <FormInput
+                  {...formData.username}
+                  onChange={handleInputChange}
+                  className="dsc-form-control "
+                  />
                 <div className="dsc-form-error"></div>
               </div>
               <div>
-                <input 
-                value={formData.password}
-                onChange={handleInputChange}
-                name="password"
-                className="dsc-form-control" 
-                type="password" 
-                placeholder="Senha" />
+                <FormInput
+                  {...formData.password}
+                  onChange={handleInputChange}
+                  className="dsc-form-control"
+                  />
               </div>
             </div>
 
