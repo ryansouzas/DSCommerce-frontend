@@ -11,45 +11,49 @@ export default function ProductForm() {
 
   const isEditing = params.productId !== 'create';
 
-   const [formData, setFormData] = useState<any>({
-      name: {
-        value: "",
-        id: "name",
-        name: "name",
-        type: "text",
-        placeholder: "Nome",
+  const [formData, setFormData] = useState<any>({
+    name: {
+      value: "",
+      id: "name",
+      name: "name",
+      type: "text",
+      placeholder: "Nome",
+    },
+    price: {
+      value: "",
+      id: "price",
+      name: "price",
+      type: "number",
+      placeholder: "Preço",
+      validation: function (value: number) {
+        return value > 0;
       },
-       price: {
-        value: "",
-        id: "price",
-        name: "price",
-        type: "number",
-        placeholder: "Preço",
-      },
-       imgUrl: {
-        value: "",
-        id: "imgUrl",
-        name: "imgUrl",
-        type: "text",
-        placeholder: "Imagem",
-      }
-    });
-
-    useEffect(() => {
-      if (isEditing) {
-        productService.findById(Number(params.productId))
-          .then(response => {
-            setFormData(forms.updateAll(formData, response.data));
-          });
-      }
-    }, []);
-
-    function handleInputChange(event: any) {
-
-      const name = event.target.name;
-      const value = event.target.value;
-      setFormData(forms.update(formData, name, value));
+      message: "Informe um preço positivo."
+    },
+    imgUrl: {
+      value: "",
+      id: "imgUrl",
+      name: "imgUrl",
+      type: "text",
+      placeholder: "Imagem",
     }
+  });
+
+  useEffect(() => {
+    if (isEditing) {
+      productService.findById(Number(params.productId))
+        .then(response => {
+          setFormData(forms.updateAll(formData, response.data));
+        });
+    }
+  }, []);
+
+  function handleInputChange(event: any) {
+
+    const name = event.target.name;
+    const value = event.target.value;
+    setFormData(forms.update(formData, name, value));
+  }
 
   return (
     <main>
@@ -59,15 +63,15 @@ export default function ProductForm() {
             <h2>Dados do produto</h2>
             <div className="dsc-form-controls-container">
               <div>
-                <FormInput {...formData.name} className="dsc-form-control"  onChange={handleInputChange}/>
+                <FormInput {...formData.name} className="dsc-form-control" onChange={handleInputChange} />
               </div>
               <div>
-                <FormInput {...formData.price} className="dsc-form-control" onChange={handleInputChange}/>
+                <FormInput {...formData.price} className="dsc-form-control" onChange={handleInputChange} />
               </div>
               <div>
-                <FormInput {...formData.imgUrl} className="dsc-form-control" onChange={handleInputChange}/>
+                <FormInput {...formData.imgUrl} className="dsc-form-control" onChange={handleInputChange} />
               </div>
-              
+
             </div>
 
             <div className="dsc-product-form-buttons">
